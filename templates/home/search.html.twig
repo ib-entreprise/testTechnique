@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+     Résultats de la recherche
+{% endblock %}
+
+{% block body %}
+     <h1>
+          Résultats pour "
+          {{ query }}
+          "
+     </h1>
+     {% if films is not empty %}
+          <table class="table">
+               <thead>
+                    <tr>
+                         <th>
+                              Titre
+                         </th>
+                         <th>
+                              Année de sortie
+                         </th>
+                         <th>
+                              Actions
+                         </th>
+                    </tr>
+               </thead>
+               <tbody>
+                    {% for film in films %}
+                         <tr>
+                              <td>
+                                   {{ film.titre }}
+                              </td>
+                              <td>
+                                   {{ film.createdAt|date('Y') }}
+                              </td>
+                              <td>
+                                   <a href="{{ path('app_film_show', {id: film.id}) }}">
+                                        Voir
+                                   </a>
+                                   <a href="{{ path('app_film_edit', {id: film.id}) }}">
+                                        Modifier
+                                   </a>
+                                   <a href="{{ path('app_film_delete', {id: film.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce film ?')">
+                                        Supprimer
+                                   </a>
+                              </td>
+                         </tr>
+                    {% endfor %}
+               </tbody>
+          </table>
+     {% else %}
+          <p>
+               Aucun film trouvé.
+          </p>
+     {% endif %}
+{% endblock %}
+
