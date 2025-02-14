@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Service\UploadFileService;
+use DateTimeImmutable;
 
 
 #[Route('/')]
@@ -40,6 +41,9 @@ final class FilmController extends AbstractController
                 $imageFileName = $this->uploadFileService->upload($imageFile);
                 $film->setImage($imageFileName);
             }
+            $film->setCreatedAt(new \DateTimeImmutable());
+           $film ->setUpdateAt(new \DateTimeImmutable());
+
             $entityManager->persist($film);
             $entityManager->flush();
 
@@ -68,6 +72,7 @@ final class FilmController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
               $imageFile = $form->get('image')->getData();
+           $film ->setUpdateAt(new \DateTimeImmutable());
 
             if ($imageFile) {
                 $imageFileName = $this->uploadFileService->upload($imageFile);

@@ -25,7 +25,7 @@ class FilmType extends AbstractType
                         'required' => false,
                         'constraints' => [
                             new File([
-                                'maxSize' => '1024k',
+                                'maxSize' => '4024k',
                                 'mimeTypes' => [
                                     'image/jpeg',
                                     'image/jpg',
