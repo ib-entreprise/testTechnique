@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Accueil
+{% endblock %}
+
+{% block body %}
+    <h1>
+        Les 5 derniers films
+    </h1>
+
+    {% if lastFilms is not empty %}
+        <ul>
+            {% for film in lastFilms %}
+                <li>
+                    <strong>
+                        {{ film.titre }}
+                    </strong>
+                    (
+                    {{ film.anneeSortie }}
+                    ) -
+                    <em>
+                        {{ film.updatedAt|date('d/m/Y H:i') }}
+                    </em>
+                    <p>
+                        {{ film.synopsis }}
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>
+            Aucun film trouvé.
+        </p>
+    {% endif %}
+{% endblock %}
+
