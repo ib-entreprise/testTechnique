@@ -72,7 +72,6 @@ final class FilmController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
               $imageFile = $form->get('image')->getData();
-           $film ->setUpdateAt(new \DateTimeImmutable());
 
             if ($imageFile) {
                 $imageFileName = $this->uploadFileService->upload($imageFile);

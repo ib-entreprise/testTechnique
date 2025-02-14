@@ -22,10 +22,20 @@
             <tr>
                 <th>Synopsis</th>
                 <td>{{ film.Synopsis }}</td>
+<img src="{{ asset(film.image) }}" alt="Image du film" />
+
+
+
             </tr>
+
             <tr>
                 <th>Image</th>
-                <td>{{ film.image }}</td>
+                <td>
+                    {{ film.image }}
+ 
+
+
+                </td>
             </tr>
             <tr>
                 <th>CreatedAt</th>
