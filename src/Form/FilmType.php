@@ -18,26 +18,24 @@ class FilmType extends AbstractType
         $builder
             ->add('titre')
             ->add('anneeSortie')
-            ->add('Synopsis')
-            
-
-    // ->add('image', FileType::class, [
-    //             'label' => 'Choisir Une image ',
-    //             'mapped' => false,
-    //             'required' => false,
-    //             'constraints' => [
-    //                 new File([
-    //                     'maxSize' => '1024k',
-    //                     'mimeTypes' => [
-    //                         'image/jpeg',
-    //                         'image/jpg',
-    //                         'image/png',
-    //                         'image/webp',
-    //                     ],
-    //                     'mimeTypesMessage' => 'Merci De Choisir une Image Valide',
-    //                 ])
-    //             ],
-    //         ])
+            ->add('Synopsis')            
+            ->add('image', FileType::class, [
+                            'label' => 'Choisir Une image ',
+                        'mapped' => false,
+                        'required' => false,
+                        'constraints' => [
+                            new File([
+                                'maxSize' => '1024k',
+                                'mimeTypes' => [
+                                    'image/jpeg',
+                                    'image/jpg',
+                                    'image/png',
+                                    'image/webp',
+                                ],
+                                'mimeTypesMessage' => 'Merci De Choisir une Image Valide',
+                            ])
+                        ],
+                    ])
 
             ->add('createdAt', null, [
                 'widget' => 'single_text',

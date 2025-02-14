@@ -22,6 +22,20 @@ final class HomeController extends AbstractController
         ]);
     }
 
-   
+     #[Route('/api-film/{id}', name: 'app_api_film')]
+    public function api($id,FilmRepository $filmRepository): Response
+    {
+        $lastFilms = $filmRepository->findBy($id);
+          if (!$film) {
+            return new JsonResponse(['error' => 'Film not found'], Response::HTTP_NOT_FOUND);
+        }
+              
+        return new JsonResponse([
+            'id' => $film->getId(),
+            'title' => $film->getTitle(),
+            'release_date' => $film->getReleaseDate()->format('Y-m-d'),
+            'description' => $film->getDescription(),            
+        ]);
+
     
 }

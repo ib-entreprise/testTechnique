@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/genre')]
+// #[Route('/genre')]
 final class GenreController extends AbstractController
 {
-    #[Route(name: 'app_genre_index', methods: ['GET'])]
+    #[Route('/admingenre',name: 'app_genre_index', methods: ['GET'])]
     public function index(GenreRepository $genreRepository): Response
     {
         return $this->render('genre/index.html.twig', [
@@ -42,7 +42,7 @@ final class GenreController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_genre_show', methods: ['GET'])]
+    #[Route('genre/{id}', name: 'app_genre_show', methods: ['GET'])]
     public function show(Genre $genre): Response
     {
         return $this->render('genre/show.html.twig', [

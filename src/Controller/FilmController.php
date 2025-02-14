@@ -30,6 +30,12 @@ final class FilmController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+             $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $imageFileName = $this->uploadFileService->upload($imageFile);
+                $film->setImage($imageFileName);
+            }
             $entityManager->persist($film);
             $entityManager->flush();
 
@@ -57,6 +63,12 @@ final class FilmController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+              $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $imageFileName = $this->uploadFileService->upload($imageFile);
+                $film->setImage($imageFileName);
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('app_film_index', [], Response::HTTP_SEE_OTHER);

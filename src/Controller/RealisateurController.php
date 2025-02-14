@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/realisateur')]
 final class RealisateurController extends AbstractController
 {
-    #[Route(name: 'app_realisateur_index', methods: ['GET'])]
+    #[Route('/adminReaisateur',  name: 'app_realisateur_index', methods: ['GET'])]
     public function index(RealisateurRepository $realisateurRepository): Response
     {
         return $this->render('realisateur/index.html.twig', [
@@ -22,7 +22,7 @@ final class RealisateurController extends AbstractController
         ]);
     }
 
-    #[Route('//ajouterRealisateur', name: 'app_realisateur_new', methods: ['GET', 'POST'])]
+    #[Route('/ajouterRealisateur', name: 'app_realisateur_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $realisateur = new Realisateur();
@@ -42,7 +42,7 @@ final class RealisateurController extends AbstractController
         ]);
     }
 
-    #[Route('/modifierRealisateur/{id}', name: 'app_realisateur_show', methods: ['GET'])]
+    #[Route('realisateur/{id}', name: 'app_realisateur_show', methods: ['GET'])]
     public function show(Realisateur $realisateur): Response
     {
         return $this->render('realisateur/show.html.twig', [
@@ -50,7 +50,7 @@ final class RealisateurController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_realisateur_edit', methods: ['GET', 'POST'])]
+    #[Route('modifierRealisateur/{id}', name: 'app_realisateur_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Realisateur $realisateur, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(RealisateurType::class, $realisateur);
