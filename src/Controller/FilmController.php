@@ -10,10 +10,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Service\UploadFileService;
+
 
 #[Route('/')]
 final class FilmController extends AbstractController
 {
+    public function __construct(private UploadFileService $uploadFileService) {}
+
     #[Route(name: 'app_film_index', methods: ['GET'])]
     public function index(FilmRepository $filmRepository): Response
     {
@@ -23,7 +27,7 @@ final class FilmController extends AbstractController
     }
 
     #[Route('/ajouterFilm', name: 'app_film_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager ): Response
     {
         $film = new Film();
         $form = $this->createForm(FilmType::class, $film);

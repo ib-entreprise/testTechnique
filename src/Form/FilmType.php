@@ -37,12 +37,7 @@ class FilmType extends AbstractType
                         ],
                     ])
 
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updateAt', null, [
-                'widget' => 'single_text',
-            ])
+            
             ->add('realisateur', EntityType::class, [
                 'class' => Realisateur::class,
                 // 'choice_label' => 'id',
