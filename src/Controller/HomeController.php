@@ -17,11 +17,11 @@ final class HomeController extends AbstractController
         ['createdAt' => 'DESC'],  
         5
     );
-
-
-
         return $this->render('home/index.html.twig', [
             'lastFilms' => $lastFilms,
         ]);
     }
+
+   
+    
 }
